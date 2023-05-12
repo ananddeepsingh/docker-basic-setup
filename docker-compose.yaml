@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  api:
+    build: ./api
+    container_name: api_c
+    ports:
+      - '4000:4000'
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+  myreactapp:
+    build: ./myreactapp
+    container_name: myreactapp_c
+    ports:
+      - '8000:3000' #8000 - docker port : 3000 local port
+    stdin_open: true
+    volumes:
+      - ./myreactapp:/app
+      - /app/node_modules
